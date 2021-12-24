@@ -1,7 +1,7 @@
 # APIs-para-monitorizacion-de-servicios-web
 API's desarrollados con Python, Flask y PostgreSQL
 
-La finalidad del proyecto es la monitorización y visualización de los servicios entregados por ciertos sistemas y servidores, la idea principal es tener el control del status de las páginas/aplicaciones web y parámetros del PC (disco, ram, cpu, version del SO). De ésta manera el usuario podrá ver si todo esta funcionando correctamente mediante las comprobaciones que puede realizar cada cierto tiempo, registros que serán almacenados en la base de datos.
+La finalidad del proyecto es la monitorización y visualización de los servicios entregados por ciertos sistemas y servidores, la idea principal es tener el control del status de las páginas/aplicaciones web y parámetros del PC (disco, ram, cpu, version del SO[Linux]). De ésta manera el usuario podrá ver si todo esta funcionando correctamente mediante las comprobaciones que puede realizar cada cierto tiempo, registros que serán almacenados en la base de datos.
 
 Para ejecutar el proyecto, primero debemos considerar tener instalado Flask, Python3 y crear una cuenta para PostgreSQL.
 
