@@ -1,0 +1,38 @@
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card card-primary card-outline">
+            <div class="card-body">
+              <br><br>
+              <table id="example2" class="display table table-striped table-bordered responsive nowrap" style="width:100%">
+              <thead>
+                <tr>
+                  <td>Nombre App</td>
+                  <td>ID App</td>
+                  <td>Created at</td>
+                  <td>App log</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for logs in list_log %}
+                <tr>
+                  <td>{{logs[0]}}</td>
+                  <td>{{logs[1]}}</td>
+                  <td>{{logs[2]}}</td>
+                  <td>{{logs[3]}}</td>
+                  <td width="130">
+                </tr>
+                {% endfor %}
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+  <!-- /.content -->
+

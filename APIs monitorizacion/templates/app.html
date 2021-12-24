@@ -1,0 +1,159 @@
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card card-primary card-outline">
+            <div class="card-body">
+              <a href="#newapp" data-toggle="modal" title="Añadir Productos">
+                    <button type='button' class='btn btn-info btn-xm'>Añadir App <span class="fas fa-plus" aria-hidden="true" title="Nuevo"></span></button>
+                </a>
+              <br><br>
+              <table id="example2" class="display table table-striped table-bordered responsive nowrap" style="width:100%">
+              <thead>
+                <tr>
+                  <td>ID APP</td>
+                  <td>NOMBRE</td>
+                  <td>TIPO</td>
+                  <td>URL/IP</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for apps in list_apps %}
+                <tr>
+                  <td>{{apps[0]}}</td>
+                  <td>{{apps[1]}}</td>
+                  <td>{{apps[2]}}</td>
+                  <td>{{apps[3]}}</td>
+                  <td width="130">
+                    <a href="#editApps{{apps[0]}}" data-toggle="modal" class="btn btn-warning btn-delete btn-sm">Editar</a>
+                      <a href="#deleteApps{{apps[0]}}" data-toggle="modal" class="btn btn-danger btn-delete btn-sm">Eliminar</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+  <!-- /.content -->
+
+<div id="newapp class="modal fade " role="dialog">
+                        <form class="form-horizontal" role="form" action="{{url_for('add_app')}}" method="POST">
+                            <div class="modal-dialog modal-xs">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Añadir App</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                        <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>Nombre App</label>
+                                                        <input type="name" name="application_name" class="form-control" id="new_rut"  required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tipo</label>
+                                                        <input type="name" name="application_type" class="form-control" id="new_dv" >
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>URL</label>
+                                                        <input type="name" name="url" class="form-control" id="new_nombre" required>
+                                                    </div>
+
+                                        </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Añadir </button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
+                                            </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+{% for apps in list_apps %}
+<div id="editApps{{apps[0]}}" class="modal fade " role="dialog">
+                        <form class="form-horizontal" role="form" action="app/update/{{apps[0]}}" method="POST">
+                            <div class="modal-dialog modal-xs">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Editar App</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                        <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>ID App</label>
+                                                        <input type="text" name="edit_id" value="{{apps[0]}}" class="form-control" readonly >
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Nombre App</label>
+                                                        <input type="text" name="edit_name" value="{{apps[1]}}" class="form-control" required  >
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tipo</label>
+                                                        <input type="text" name="edit_type" value="{{apps[2]}}" class="form-control" >
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>URL/IP</label>
+                                                        <input type="text" name="edit_url" value="{{apps[3]}}" class="form-control" required >
+                                                    </div>
+                                        </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-warning"><span class="glyphicon glyphicon-ok"></span> Actualizar </button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
+                                            </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+<div id="deleteApps{{apps[0]}}" class="modal fade " role="dialog">
+                        <form class="form-horizontal" role="form" action="/app/delete/{{apps[0]}}" method="POST">
+                            <div class="modal-dialog modal-xs">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Eliminar App</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                        <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>ID App</label>
+                                                        <input type="number" name="edit_id" value="{{apps[0]}}" class="form-control" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Nombre App</label>
+                                                        <input type="text" name="edit_name" value="{{apps[1]}}" class="form-control" readonly >
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Tipo</label>
+                                                        <input type="text" name="edit_type" value="{{apps[2]}}" class="form-control" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>URL/IP</label>
+                                                        <input type="text" name="edit_url" value="{{apps[3]}}" class="form-control" readonly>
+                                                    </div>
+                                        </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-danger"><span class="glyphicon glyphicon-ok"></span> Eliminar </button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
+                                            </div>
+
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+{% endfor %}
+</div>
+
+
